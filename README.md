@@ -12,7 +12,7 @@ $ ./mvnw clean package
 $ cd ../orders
 $ ./mvnw clean package
 $ cd ..
-$ docker-compose up -d orders
+$ docker-compose up -d orders products
 ```
 
 Depois, você pode usar as coleções do Postman deste repositório para interagir com os serviços.

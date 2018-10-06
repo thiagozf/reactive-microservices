@@ -9,7 +9,6 @@ services:
       - app_net
     depends_on:
     - kafka
-    - products
 
   products:
     image: products
