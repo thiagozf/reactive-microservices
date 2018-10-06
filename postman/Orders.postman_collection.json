@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "5ae2a44c-374b-4eec-92d8-2d00a8777293",
+		"name": "Orders",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": \"thiagozf\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/orders/1d5d107f-f945-4b08-8d01-fae8c3139044",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"1d5d107f-f945-4b08-8d01-fae8c3139044"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Order Line",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/7693c6d4-84d2-49e9-8a90-0dedee48086f/lines/SUCO-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"7693c6d4-84d2-49e9-8a90-0dedee48086f",
+						"lines",
+						"SUCO-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Order Line",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": \"SKU-2\",\n    \"price\": 2,\n    \"quantity\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/ca5dc694-2988-4cc2-8644-d604b43f5835/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"ca5dc694-2988-4cc2-8644-d604b43f5835",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Order",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/3252f6cf-3b0f-423d-82db-fc646554cd2a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"3252f6cf-3b0f-423d-82db-fc646554cd2a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Finish Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/orders/ca5dc694-2988-4cc2-8644-d604b43f5835/place",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"ca5dc694-2988-4cc2-8644-d604b43f5835",
+						"place"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

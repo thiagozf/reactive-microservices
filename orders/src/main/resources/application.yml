@@ -1,0 +1,8 @@
+spring:
+  kafka:
+    bootstrap-servers: kafka:19092
+
+app:
+  topics:
+    orders: orders
+    products: products
