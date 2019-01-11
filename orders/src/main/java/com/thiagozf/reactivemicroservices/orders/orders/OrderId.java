@@ -1,13 +1,11 @@
 package com.thiagozf.reactivemicroservices.orders.orders;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.thiagozf.reactivemicroservices.orders.domain.AggregateId;
 
 import java.beans.ConstructorProperties;
 import java.util.Objects;
 import java.util.UUID;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderId implements AggregateId {
 
     private String value;

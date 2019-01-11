@@ -3,18 +3,18 @@ package com.thiagozf.reactivemicroservices.orders.products.events.control;
 import com.thiagozf.reactivemicroservices.orders.products.Product;
 import com.thiagozf.reactivemicroservices.orders.products.ProductsStorage;
 import com.thiagozf.reactivemicroservices.orders.products.events.domain.ProductCreated;
-import com.thiagozf.reactivemicroservices.orders.products.events.domain.ProductEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.kafka.support.KafkaNull;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 @Service
+@KafkaListener(topics = "${app.topics.products}")
 public class ProductEventHandler {
-
-    private static final Logger log = LoggerFactory.getLogger(ProductEventHandler.class);
 
     private ProductsStorage productsStorage;
 
@@ -23,14 +23,13 @@ public class ProductEventHandler {
         this.productsStorage = productsStorage;
     }
 
-    @SuppressWarnings({"squid:S2201"})
-    @KafkaListener(topics = "${app.topics.products}")
-    public void listen(@Payload ProductEvent event) {
-        log.info("receiving = {}", event);
+    @KafkaHandler
+    public void onProductCreated(@Payload ProductCreated productCreated) {
+        productsStorage.put(new Product(productCreated));
+    }
 
-        if (event.eventType().equals("ProductCreated")) {
-            productsStorage.put(new Product((ProductCreated) event));
-            return;
-        }
+    @KafkaHandler
+    public void onProductDeleted(@Payload(required = false) KafkaNull nul, @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) int key) {
+        // Do nothing...
     }
 }

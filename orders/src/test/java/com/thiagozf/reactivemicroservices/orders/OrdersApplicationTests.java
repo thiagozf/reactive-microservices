@@ -11,6 +11,7 @@ public class OrdersApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		// Nothing to do
 	}
 
 }

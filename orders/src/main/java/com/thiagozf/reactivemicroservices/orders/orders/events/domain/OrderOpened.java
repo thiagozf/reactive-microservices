@@ -1,13 +1,11 @@
 package com.thiagozf.reactivemicroservices.orders.orders.events.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.thiagozf.reactivemicroservices.orders.customer.CustomerId;
 import com.thiagozf.reactivemicroservices.orders.orders.OrderId;
 
 import java.beans.ConstructorProperties;
 import java.util.Objects;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderOpened extends OrderEvent {
 
     private CustomerId customerId;

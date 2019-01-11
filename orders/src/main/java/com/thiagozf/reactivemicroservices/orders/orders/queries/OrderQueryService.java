@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @Service
 public class OrderQueryService {
@@ -19,7 +18,7 @@ public class OrderQueryService {
         this.ordersStorage = ordersStorage;
     }
 
-    public Optional<Order> getOrder(final OrderId orderId) {
+    public Order getOrder(final OrderId orderId) {
         return ordersStorage.get(orderId);
     }
 

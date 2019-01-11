@@ -1,13 +1,11 @@
 package com.thiagozf.reactivemicroservices.orders.orders.events.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.thiagozf.reactivemicroservices.orders.orders.OrderId;
 import com.thiagozf.reactivemicroservices.orders.products.ProductId;
 
 import java.beans.ConstructorProperties;
 import java.util.Objects;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ItemRemoved extends OrderEvent {
     private ProductId productId;
 
