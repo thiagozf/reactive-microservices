@@ -1,13 +1,11 @@
 package com.thiagozf.reactivemicroservices.products.products.events.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.thiagozf.reactivemicroservices.products.products.ProductId;
 
 import java.beans.ConstructorProperties;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductCreated extends ProductEvent {
     private String description;
     private BigDecimal price;

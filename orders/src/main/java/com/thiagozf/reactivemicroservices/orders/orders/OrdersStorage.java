@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
@@ -16,8 +16,13 @@ public class OrdersStorage {
         return order;
     }
 
-    public Optional<Order> get(final OrderId id) {
-        return Optional.ofNullable(orders.get(id));
+    public Order get(final OrderId id) {
+        Order order = orders.get(id);
+        if (Objects.isNull(order)) {
+            throw new OrderNotFoundException();
+        }
+
+        return order;
     }
 
     public Collection<Order> all() {

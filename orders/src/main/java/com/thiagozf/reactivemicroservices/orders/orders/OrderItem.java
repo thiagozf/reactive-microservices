@@ -1,12 +1,10 @@
 package com.thiagozf.reactivemicroservices.orders.orders;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.thiagozf.reactivemicroservices.orders.products.ProductId;
 
 import java.beans.ConstructorProperties;
 import java.math.BigDecimal;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderItem {
     private ProductId productId;
     private BigDecimal price;

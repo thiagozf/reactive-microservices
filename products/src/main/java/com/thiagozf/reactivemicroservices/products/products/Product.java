@@ -1,13 +1,11 @@
 package com.thiagozf.reactivemicroservices.products.products;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.thiagozf.reactivemicroservices.products.domain.Aggregate;
 import com.thiagozf.reactivemicroservices.products.products.commands.domain.CreateProductCommand;
 import com.thiagozf.reactivemicroservices.products.products.events.domain.ProductCreated;
 
 import java.math.BigDecimal;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Aggregate<ProductId> {
     private ProductId id;
     private String description;

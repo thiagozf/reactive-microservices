@@ -1,6 +1,5 @@
 package com.thiagozf.reactivemicroservices.orders.orders;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.thiagozf.reactivemicroservices.orders.customer.CustomerId;
 import com.thiagozf.reactivemicroservices.orders.domain.Aggregate;
 import com.thiagozf.reactivemicroservices.orders.orders.commands.domain.*;
@@ -11,7 +10,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Order implements Aggregate<OrderId> {
     private OrderId id;
     private CustomerId customerId;
@@ -57,6 +55,7 @@ public class Order implements Aggregate<OrderId> {
     public Order removeItem(ItemRemoved event) {
         checkStatus();
         this.lines.removeIf(item -> event.getProductId().equals(item.getProductId()));
+        this.updatedAt = event.getTimestamp();
         return this;
     }
 

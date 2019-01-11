@@ -11,6 +11,6 @@ public class ProductsApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		// Nothing to do
 	}
-
 }

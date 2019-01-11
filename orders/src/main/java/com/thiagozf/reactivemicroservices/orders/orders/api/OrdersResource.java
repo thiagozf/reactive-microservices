@@ -98,8 +98,6 @@ public class OrdersResource {
     @GetMapping("/{orderId}")
     public ResponseEntity getOrder(@NotNull @PathVariable String orderId) {
         log.debug("REST request get order : {}", orderId);
-        return queryService.getOrder(OrderId.of(orderId))
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        return ResponseEntity.ok(queryService.getOrder(OrderId.of(orderId)));
     }
 }

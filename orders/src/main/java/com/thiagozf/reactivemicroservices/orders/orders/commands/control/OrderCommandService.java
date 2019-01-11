@@ -1,7 +1,6 @@
 package com.thiagozf.reactivemicroservices.orders.orders.commands.control;
 
 import com.thiagozf.reactivemicroservices.orders.orders.Order;
-import com.thiagozf.reactivemicroservices.orders.orders.OrderNotFoundException;
 import com.thiagozf.reactivemicroservices.orders.orders.OrdersStorage;
 import com.thiagozf.reactivemicroservices.orders.orders.events.control.OrderEventProducer;
 import com.thiagozf.reactivemicroservices.orders.orders.commands.domain.*;
@@ -21,21 +20,21 @@ public class OrderCommandService {
     }
 
     public ItemRemoved removeItem(RemoveItemCommand command) {
-        final Order order = ordersStorage.get(command.getOrderId()).orElseThrow(OrderNotFoundException::new);
+        final Order order = ordersStorage.get(command.getOrderId());
         final ItemRemoved itemRemoved = order.on(command);
         orderEventProducer.publish(itemRemoved);
         return itemRemoved;
     }
 
     public ItemAdded addItem(AddItemCommand command) {
-        final Order order = ordersStorage.get(command.getOrderId()).orElseThrow(OrderNotFoundException::new);
+        final Order order = ordersStorage.get(command.getOrderId());
         final ItemAdded itemAdded = order.on(command);
         orderEventProducer.publish(itemAdded);
         return itemAdded;
     }
 
     public OrderCancelled cancelOrder(CancelOrderCommand command) {
-        final Order order = ordersStorage.get(command.getOrderId()).orElseThrow(OrderNotFoundException::new);
+        final Order order = ordersStorage.get(command.getOrderId());
         final OrderCancelled orderCancelled = order.on(command);
         orderEventProducer.publish(orderCancelled);
         return orderCancelled;
@@ -48,7 +47,7 @@ public class OrderCommandService {
     }
 
     public OrderPlaced placeOrder(PlaceOrderCommand command) {
-        final Order order = ordersStorage.get(command.getOrderId()).orElseThrow(OrderNotFoundException::new);
+        final Order order = ordersStorage.get(command.getOrderId());
         final OrderPlaced orderPlaced = order.on(command);
         orderEventProducer.publish(orderPlaced);
         return orderPlaced;
