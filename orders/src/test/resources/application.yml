@@ -1,0 +1,24 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:19092
+    consumer:
+      group-id: order-consumer-${random.uuid}
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+
+app:
+  topics:
+    orders: orders
+    products: products

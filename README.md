@@ -1,5 +1,7 @@
 # Reactive Microservices
 
+[![Build Status](https://travis-ci.org/thiagozf/reactive-microservices.svg?branch=master)](https://travis-ci.org/thiagozf/reactive-microservices)
+
 Este projeto demonstra como os conceitos de Event Sourcing e CQRS podem ser aplicados em uma arquitetura de microsserviços. O exemplo consiste em um e-commerce e mostra a interação entre dois serviços: compras e produtos. Ele foi utilizado como referência para a minha talk no 9° Meetup do [Criciúma DEV](https://criciumadev.com.br/)! 
 
 # Como executar?
