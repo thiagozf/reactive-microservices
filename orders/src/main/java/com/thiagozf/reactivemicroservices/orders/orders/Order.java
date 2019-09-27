@@ -53,28 +53,24 @@ public class Order implements Aggregate<OrderId> {
     }
 
     public Order removeItem(ItemRemoved event) {
-        checkStatus();
         this.lines.removeIf(item -> event.getProductId().equals(item.getProductId()));
         this.updatedAt = event.getTimestamp();
         return this;
     }
 
     public Order addItem(ItemAdded event) {
-        checkStatus();
         this.lines.add(new OrderItem(event.getProductId(), event.getPrice(), event.getQuantity()));
         this.updatedAt = event.getTimestamp();
         return this;
     }
 
     public Order cancel(OrderCancelled event) {
-        this.checkStatus();
         this.status = Status.CANCELLED;
         this.updatedAt = event.getTimestamp();
         return this;
     }
 
     public Order place(OrderPlaced event) {
-        this.checkStatus();
         this.status = Status.PLACED;
         this.updatedAt = event.getTimestamp();
         return this;
